@@ -63,7 +63,7 @@ mysql. I used XAMPP with apache and phpmyadmin to manage mysql. IF going that ro
 <button type="button" onclick="show(1)">Display locations serving lunch</button>
 <button type="button" onclick="show(2)">Display locations serving dinner</button>
 <button type="button" onclick="show(3)">Display all locations</button>
-<input class="timepicker" name=timepicker"/>
+<input class="timepicker" name="timepicker"/>
 <button id="btn">What's Open?</button>
 	</p1>
     <div id="map"></div>
