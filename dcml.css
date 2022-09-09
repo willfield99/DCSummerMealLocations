@@ -1,0 +1,26 @@
+body {
+    background-color: #11ffee00;
+  }
+  
+  h1 {
+    color: navy;
+    margin-left: 20px;
+  }
+
+  button {
+      background-color: cream;
+  }
+
+  p1 {
+    position: absolute;
+    top: 10px;
+    left: 25%;
+    z-index: 5;
+    background-color: #fff;
+    padding: 0px;
+    border: 0px solid #999;
+    text-align: center;
+    font-family: 'Roboto','sans-serif';
+    line-height: 30px;
+    padding-left: 1px;
+  }
