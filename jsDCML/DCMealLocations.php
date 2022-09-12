@@ -1,7 +1,6 @@
 <?php 
 /*
-Matthew Barlow, Hugh Hamilton, William Field
-Last edited 12/7/21 William Field for Theory of Database Management Systems
+William Field
 
 This file uses the Google Maps javascript API to create a map of summer meal locations in Washington, DC. summer_meals is a sql database
 containing data from https://opendata.dc.gov/datasets/DCGIS::summer-meals-sites/about. To run this file you will need to have a locally hosted server setup that supports
@@ -58,6 +57,8 @@ mysql. I used XAMPP with apache and phpmyadmin to manage mysql. IF going that ro
 </head>
   
   <body>
+
+
   <p1>
 <button type="button" onclick="show(0)">Display locations serving breakfast</button>
 <button type="button" onclick="show(1)">Display locations serving lunch</button>
@@ -65,6 +66,12 @@ mysql. I used XAMPP with apache and phpmyadmin to manage mysql. IF going that ro
 <button type="button" onclick="show(3)">Display all locations</button>
 <input class="timepicker" name="timepicker"/>
 <button id="btn">What's Open?</button>
+
+<!-- ... existing HTML ... -->
+
+<div id="like_button_container"></div>
+<!-- ... existing HTML ... -->
+
 	</p1>
     <div id="map"></div>
 	
@@ -268,6 +275,14 @@ mysql. I used XAMPP with apache and phpmyadmin to manage mysql. IF going that ro
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALgfwg1uTvNTLYYD0A9N_hZ36q9mVsUac&callback=initMap"
     async defer></script>
 	
+	<!-- ... other HTML ... -->
+
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>  
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <!-- Load our React component. -->
+  <script src="like_button.js"></script>
 	
   </body>
 </html>
