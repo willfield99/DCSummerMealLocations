@@ -67,10 +67,6 @@ mysql. I used XAMPP with apache and phpmyadmin to manage mysql. IF going that ro
 <input class="timepicker" name="timepicker"/>
 <button id="btn">What's Open?</button>
 
-<!-- ... existing HTML ... -->
-
-<div id="like_button_container"></div>
-<!-- ... existing HTML ... -->
 
 	</p1>
     <div id="map"></div>
@@ -275,14 +271,6 @@ mysql. I used XAMPP with apache and phpmyadmin to manage mysql. IF going that ro
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALgfwg1uTvNTLYYD0A9N_hZ36q9mVsUac&callback=initMap"
     async defer></script>
 	
-	<!-- ... other HTML ... -->
-
-  <!-- Load React. -->
-  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
-  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>  
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
-  <!-- Load our React component. -->
-  <script src="like_button.js"></script>
 	
   </body>
 </html>
