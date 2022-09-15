@@ -1,7 +1,6 @@
 <?php 
 /*
-Matthew Barlow, Hugh Hamilton, William Field
-Last edited 12/7/21 William Field for Theory of Database Management Systems
+William Field
 
 This file uses the Google Maps javascript API to create a map of summer meal locations in Washington, DC. summer_meals is a sql database
 containing data from https://opendata.dc.gov/datasets/DCGIS::summer-meals-sites/about. To run this file you will need to have a locally hosted server setup that supports
@@ -31,68 +30,47 @@ mysql. I used XAMPP with apache and phpmyadmin to manage mysql. IF going that ro
 	  exit();
   }
 ?>
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-	
-    <title>DC Meal Locations</title>
-    <meta name="viewport" content="initial-scale=1.0">
-    <meta charset="utf-8">
-    <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #map {
-        height: 100%;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-    </style>
-	
-	
-	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
-	<Link rel="stylesheet" href="dcml.css">
-</head>
-  
-  <body>
-  <p1>
-<button type="button" onclick="show(0)">Display locations serving breakfast</button>
-<button type="button" onclick="show(1)">Display locations serving lunch</button>
-<button type="button" onclick="show(2)">Display locations serving dinner</button>
-<button type="button" onclick="show(3)">Display all locations</button>
-<input class="timepicker" name="timepicker"/>
-<button id="btn">What's Open?</button>
+
+
+
+
+	<p1>
+	<button type="button" onclick="show(0)">Display locations serving breakfast</button>
+	<button type="button" onclick="show(1)">Display locations serving lunch</button>
+	<button type="button" onclick="show(2)">Display locations serving dinner</button>
+	<button type="button" onclick="show(3)">Display all locations</button>
+	<input class="timepicker" name="timepicker"/>
+	<button id="btn">What's Open?</button>
+
+
 	</p1>
-    <div id="map"></div>
+	<div id="map"></div>
 	
-    <script  src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
+	<script  src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
 	<script  src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
-    
+	
 	<script>
 	$(document).ready(function(){
-    $('input.timepicker').timepicker({
-        timeFormat: 'HH:mm:ss',
-        // year, month, day and seconds are not important
-        minTime: new Date(0, 0, 0, 5, 0, 0),
-        maxTime: new Date(0, 0, 0, 23, 0, 0),
-        // time entries start being generated at 6AM but the plugin 
-        // shows only those within the [minTime, maxTime] interval
-        startHour: 6,
-        // the value of the first item in the dropdown, when the input
-        // field is empty. This overrides the startHour and startMinute 
-        // options
-        startTime: new Date(0, 0, 0, 8, 20, 0),
-        // items in the dropdown are separated by at interval minutes
-        interval: 10,
+	$('input.timepicker').timepicker({
+		timeFormat: 'HH:mm:ss',
+		// year, month, day and seconds are not important
+		minTime: new Date(0, 0, 0, 5, 0, 0),
+		maxTime: new Date(0, 0, 0, 23, 0, 0),
+		// time entries start being generated at 6AM but the plugin 
+		// shows only those within the [minTime, maxTime] interval
+		startHour: 6,
+		// the value of the first item in the dropdown, when the input
+		// field is empty. This overrides the startHour and startMinute 
+		// options
+		startTime: new Date(0, 0, 0, 8, 20, 0),
+		// items in the dropdown are separated by at interval minutes
+		interval: 10,
 		
 		dropdown: true,
 		
 		dynamic: true,
 		
-    });
+	});
 	$('#btn').click(function(){
 		var d = $('input.timepicker').val();
 		//console.log(d.toString());
@@ -112,20 +90,20 @@ mysql. I used XAMPP with apache and phpmyadmin to manage mysql. IF going that ro
 	
 	// Sets the map on all markers in the array.
 	function setMapOnAll(map) {
-	  for (let i = 0; i < markers.length; i++) {
+		for (let i = 0; i < markers.length; i++) {
 		markers[i].setMap(map);
-	  }
+		}
 	}
 
 	// Removes the markers from the map, but keeps them in the array.
 	function hideMarkers() {
-	  setMapOnAll(null);
+		setMapOnAll(null);
 	}
 
 	// Deletes all markers in the array by removing references to them.
 	function deleteMarkers() {
-	  hideMarkers();
-	  markers = [];
+		hideMarkers();
+		markers = [];
 	}
 	
 	//closes an open info window
@@ -162,12 +140,12 @@ mysql. I used XAMPP with apache and phpmyadmin to manage mysql. IF going that ro
 						
 						const infowindow = new google.maps.InfoWindow({
 							content: contentString,
-						  });
-						  marker.addListener("click", () => {
+							});
+							marker.addListener("click", () => {
 							closeOpenInfoWindow();
 							infowindow.open(map, marker);
 							openInfoWindow = infowindow;
-						  });	
+							});	
 	}
 	
 	function show(sl, byTime = false, dTime = 0) {//determines whether to show breakfast lunch dinner or all, uses the html buttons for input
@@ -198,7 +176,7 @@ mysql. I used XAMPP with apache and phpmyadmin to manage mysql. IF going that ro
 						}
 					}
 			}
-	  }
+		}
 	
 	function timeParse(dirtyTime, meal){//returns array containing both times, parses yucky time strings from sql into prettier strings that we can actually use
 		var tTime = dirtyTime.toString().split('-');
@@ -254,20 +232,18 @@ mysql. I used XAMPP with apache and phpmyadmin to manage mysql. IF going that ro
 	}
 	
 	function initMap() {//making the map
-	  const capitol = { lat: 38.889805, lng: -77.009056 };//capitol building
-      map = new google.maps.Map(document.getElementById('map'), {
+		const capitol = { lat: 38.889805, lng: -77.009056 };//capitol building
+		map = new google.maps.Map(document.getElementById('map'), {
 		zoom: 12,
 		center: new google.maps.LatLng(38.89511,-77.03637)//centers on DC
 		
-	  });
-	  show(sl, false);//by default show all locations
-      }
-	  //my API key is the src below
-    </script>
+		});
+		show(sl, false);//by default show all locations
+		}
+		//my API key is the src below
+	</script>
 	
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALgfwg1uTvNTLYYD0A9N_hZ36q9mVsUac&callback=initMap"
-    async defer></script>
+	async defer></script>
 	
-	
-  </body>
-</html>
+ </script> 
